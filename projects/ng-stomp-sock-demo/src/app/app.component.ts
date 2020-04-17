@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StompSockService } from 'projects/ng-stomp-sock/src/lib/services/websocket/stomp-sock.service';
-import { WsCommand } from 'projects/ng-stomp-sock/src/lib/models/enums/wsCommand';
 import { Observable } from 'rxjs';
-import { StompSockWebSocket } from 'projects/ng-stomp-sock/src/lib/websocket/stomp-sock-websocket.class';
 import { filter } from 'rxjs/operators';
+import { StompSockService, StompSockWebSocket, WsCommand } from '@oril/ng-stomp-sock';
 
 @Component({
   selector: 'app-root',

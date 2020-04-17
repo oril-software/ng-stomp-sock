@@ -1,5 +1,5 @@
 {
-  "name": "ng-stomp-sock",
+  "name": "@oril/ng-stomp-sock",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^9.0.7",

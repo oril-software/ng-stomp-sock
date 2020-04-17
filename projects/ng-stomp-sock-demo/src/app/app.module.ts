@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgStompSockModule } from 'projects/ng-stomp-sock/src/public-api';
+import { NgStompSockModule } from '@oril/ng-stomp-sock';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import { NgStompSockModule } from 'projects/ng-stomp-sock/src/public-api';
     BrowserModule,
     AppRoutingModule,
     NgStompSockModule.config({
-      url: 'SOCKET_URL' // e.g. https://api.com/sockets
+      url: 'SOCKET_API_URL' // e.g. https://api.com/sockets
     }),
   ],
   providers: [],

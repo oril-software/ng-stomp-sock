@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { StompSockService } from 'projects/ng-stomp-sock/src/lib/services/websocket/stomp-sock.service';
+import { StompSockService } from 'projects/ng-stomp-sock/src/lib/services/stomp-sock/stomp-sock.service';
 import { NgStompSockModule } from 'projects/ng-stomp-sock/src/public-api';
 import { config } from 'projects/ng-stomp-sock/src/lib/tokens/injection-token';
 

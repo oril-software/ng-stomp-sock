@@ -1,24 +1,64 @@
-# NgStompSock
+# ng-stomp-sock
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
+This package is an Angular 8+ wrapper for using [STOMP.js](https://github.com/stomp-js/stompjs) over [SockJS](https://github.com/sockjs/sockjs-client).
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name --project ng-stomp-sock` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-stomp-sock`.
-> Note: Don't forget to add `--project ng-stomp-sock` or else it will be added to the default project in your `angular.json` file. 
+Use the node package manager [npm](https://www.npmjs.com/) to install `ng-stomp-sock`.
 
-## Build
+```bash
+npm install ng-stomp-sock @stomp/stompjs sockjs-client 
+```
+You are configured now.
 
-Run `ng build ng-stomp-sock` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
 
-## Publishing
+First, import the `NgStompSockModule` in your `AppModule`.
+```typescript
+import { NgStompSockModule } from 'ng-stomp-sock'
+//...
+@NgModule({
+  imports: [
+    //...
+    NgStompSockModule.config({
+      url: 'SOCKET_URL' // e.g. https://api.com/sockets
+    }),
+    //...
+  ],
+  //...
+})
+//...
+```
+Second, in your component or service.
+```typescript
 
-After building your library with `ng build ng-stomp-sock`, go to the dist folder `cd dist/ng-stomp-sock` and run `npm publish`.
+import { ApplicationWebSocket, WsCommand } from 'ng-stomp-sock';
 
-## Running unit tests
+export class AppComponent implements OnInit {
 
-Run `ng test ng-stomp-sock` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  constructor(
+    private _webSocketService: WebSocketService,
+  ) {
 
-## Further help
+  }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  ngOnInit() {
+    this._webSocketService.connected$
+      .pipe(filter(connected => connected))
+      .subscribe(() => this._getWebSocket());
+  }
+
+  private _getWebSocket() {
+    this._webSocketService.getWebSocket('api_endpoint', {}) // e.g. ('activities', { page: 0, size: 10})
+      .on(WsCommand.MESSAGE).subscribe(
+        response => console.log(response)
+      );
+  }
+}
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[MIT](https://github.com/oril-software/ng-stomp-sock/blob/master/LICENSE)

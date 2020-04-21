@@ -2,6 +2,8 @@
 
 This package is an Angular 8+ wrapper for using [STOMP.js](https://github.com/stomp-js/stompjs) over [SockJS](https://github.com/sockjs/sockjs-client).
 
+![ng-stomp-sock demo](https://raw.githubusercontent.com/oril-software/ng-stomp-sock/master/projects/ng-stomp-sock-demo/src/assets/demo.gif)
+
 # Installation
 
 1. Use the node package manager [npm](https://www.npmjs.com/) to install `ng-stomp-sock`.

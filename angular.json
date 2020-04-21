@@ -28,6 +28,7 @@
               "projects/ng-stomp-sock-demo/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/ng-stomp-sock-demo/src/styles.scss"
             ],
             "scripts": []
@@ -92,6 +93,7 @@
               "projects/ng-stomp-sock-demo/src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/ng-stomp-sock-demo/src/styles.scss"
             ],
             "scripts": []
@@ -163,7 +165,8 @@
           }
         }
       }
-    }},
+    }
+  },
   "cli": {
     "analytics": "1c3dd8f3-02b7-465f-ab31-b2bda07da424"
   },

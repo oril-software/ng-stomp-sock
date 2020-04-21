@@ -31,9 +31,9 @@ export class StompSockService {
     this._stompClient.activate();
   }
 
-  public getWebSocket(type: string, headers?: any): StompSockWebSocket {
+  public getWebSocket(destination: string, headers?: any): StompSockWebSocket {
 
-    return this._factoryGet(type, headers).value as any;
+    return this._factoryGet(destination, headers).value as any;
   }
 
   private _factoryGet(type: string, headers?: any): FactoryItem<any> {
@@ -73,8 +73,8 @@ export class StompSockService {
     this._factory.splice(idx, 1);
   }
 
-  public unsubscribe(type: string) {
-    this._removeFromFactory(type);
+  public unsubscribe(destination: string) {
+    this._removeFromFactory(destination);
   }
 }
 

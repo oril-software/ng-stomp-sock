@@ -43,8 +43,8 @@ export class StompSockWebSocket implements IStompSockWebsocket {
         }
     }
 
-    public send(event: string, data: any): void {
-            this.stompClient.publish({destination: event, headers: {pageRequest: JSON.stringify(data), body: {}}});
+    public send(destination: string, data: any): void {
+            this.stompClient.publish({destination, headers: {pageRequest: JSON.stringify(data), body: {}}});
     }
 
     public isValidJSON(text: string): boolean {

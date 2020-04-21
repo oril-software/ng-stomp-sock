@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+    button {
+        margin-right: 1rem;
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}
+.accent {
+    color: #ff4081;
+}
+.primary {
+    color: #3f51b5;
+    
+}
+.warn {
+    color: #f44336;
+}

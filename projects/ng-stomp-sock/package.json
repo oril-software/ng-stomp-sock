@@ -1,11 +1,26 @@
 {
   "name": "@oril/ng-stomp-sock",
   "version": "0.0.2-0",
+  "description": "Angular 8+ wrapper for using STOMP.js over SockJS",
   "peerDependencies": {
     "@angular/common": "^9.0.7",
     "@angular/core": "^9.0.7",
     "tslib": "^1.10.0",
     "@stomp/stompjs": "^5.3.0",
     "sockjs-client": "^1.3.0"
+  },
+  "keywords": ["angular", "angular 8", "SockJS", "STOMP.js", "wrapper", "ng"],
+  "homepage": "https://github.com/oril-software/ng-stomp-sock",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oril-software/ng-stomp-sock/issues"
+  },
+  "author": {
+    "name": "Alexander Panchuk",
+    "url": "https://github.com/alexander-panchuk-oril"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oril-software/ng-stomp-sock.git"
   }
 }

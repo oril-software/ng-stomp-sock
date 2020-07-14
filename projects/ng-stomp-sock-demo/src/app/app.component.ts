@@ -63,8 +63,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public disconnect() {
-    this.activityWS.unsubscribe();
+    this._webSocketService.unsubscribe('endpoint');
     this.activityWS = null;
+    this.page = 0;
     this._log('Endpoint disconnected!', 'warn');
   }
 

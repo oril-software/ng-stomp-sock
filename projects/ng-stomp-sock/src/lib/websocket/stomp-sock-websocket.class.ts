@@ -26,7 +26,7 @@ export class StompSockWebSocket implements IStompSockWebsocket {
                 if (this.isValidJSON(message.body)) {
                     this.wsMessages$.next(new WsMessage(message.command as WsCommand, JSON.parse(message.body)));
                 }
-            }, {pageRequest : JSON.stringify(this.headers)});
+            }, { pageRequest: JSON.stringify(this.headers) });
     }
 
     public unsubscribe() {
@@ -44,7 +44,7 @@ export class StompSockWebSocket implements IStompSockWebsocket {
     }
 
     public send(destination: string, data: any): void {
-            this.stompClient.publish({destination, headers: {pageRequest: JSON.stringify(data), body: {}}});
+        this.stompClient.publish({ destination: `${destination}/${this._guid}`, headers: { pageRequest: JSON.stringify(data), body: {} } });
     }
 
     public isValidJSON(text: string): boolean {

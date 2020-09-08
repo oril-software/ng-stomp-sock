@@ -38,8 +38,6 @@ export class StompSockWebSocket implements IStompSockWebsocket {
             });
         });
 
-        console.log(stringifiedHeaders);
-
         return stringifiedHeaders;
     }
 

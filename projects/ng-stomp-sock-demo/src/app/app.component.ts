@@ -14,7 +14,8 @@ export class AppComponent implements OnInit, OnDestroy {
   public isConnected$: BehaviorSubject<boolean>;
   public logs: { msg: string, color?: string }[] = [];
   public page = 0;
-
+  private _endpoint = 'endpoint';
+  private _requestEndpoint = 'request_endpoint';
   private _isEndpointConnected: boolean;
 
   constructor(
@@ -40,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public connectToEndpoint() {
     this._log('Connecting to endpoint...');
-    this.activityWS = this._webSocketService.getWebSocket('endpoint', { page: this.page});
+    this.activityWS = this._webSocketService.getWebSocket(this._endpoint, { pageRequest: { page: this.page } });
     this.page++;
     this._subscribeActivity();
   }
@@ -58,12 +59,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public send() {
     this._log(`Requesting #${this.page} page...`);
-    this.activityWS.send('request_endpoint', { page: this.page });
+    this.activityWS.send(this._requestEndpoint, { pageRequest: { page: this.page } });
     this.page++;
   }
 
   public disconnect() {
-    this._webSocketService.unsubscribe('endpoint');
+    this._webSocketService.unsubscribe(this._endpoint);
     this.activityWS = null;
     this.page = 0;
     this._log('Endpoint disconnected!', 'warn');

@@ -49,6 +49,9 @@ export class AppComponent implements OnInit {
 
   public activityWS: StompSockWebSocket;
 
+  private _endpoint = 'endpoint';
+  private _requestEndpoint = 'request_endpoint';
+
   constructor(
     private _webSocketService: StompSockService
   ) { }
@@ -64,16 +67,16 @@ export class AppComponent implements OnInit {
   }
 
   public connectToEndpoint() {
-    this.activityWS = this._webSocketService.getWebSocket('endpoint');
+    this.activityWS = this._webSocketService.getWebSocket(this._endpoint);
     this._subscribeActivity();
   }
 
   public send() {
-    this.activityWS.send('request_endpoint', { });
+    this.activityWS.send(this._requestEndpoint, { });
   }
 
   public disconnect() {
-    this._webSocketService.unsubscribe('endpoint');
+    this._webSocketService.unsubscribe(this._endpoint);
   }
 
   private _subscribeActivity() {

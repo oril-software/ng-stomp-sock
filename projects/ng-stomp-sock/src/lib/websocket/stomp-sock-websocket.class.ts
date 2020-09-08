@@ -15,7 +15,7 @@ export class StompSockWebSocket implements IStompSockWebsocket {
 
         return this._guid;
     }
-    constructor(public stompClient: any, subscribeURL: string, public headers: any = {}) {
+    constructor(public stompClient: any, subscribeURL: string, public headers: {[key: string]: any} = {}) {
         this._guid = Guid.newGuid();
         this._subscribe(subscribeURL);
     }
@@ -26,7 +26,21 @@ export class StompSockWebSocket implements IStompSockWebsocket {
                 if (this.isValidJSON(message.body)) {
                     this.wsMessages$.next(new WsMessage(message.command as WsCommand, JSON.parse(message.body)));
                 }
-            }, { pageRequest: JSON.stringify(this.headers) });
+            }, this._stringifyHeaders(this.headers));
+    }
+
+    private _stringifyHeaders(headers: any): {[key: string]: string} {
+        const stringifiedHeaders = {};
+
+        Object.keys(headers).forEach(key => {
+            Object.assign(stringifiedHeaders, {
+                [key]: (typeof headers[key] === 'object' ? JSON.stringify(headers[key]) : headers[key])
+            });
+        });
+
+        console.log(stringifiedHeaders);
+
+        return stringifiedHeaders;
     }
 
     public unsubscribe() {
@@ -43,8 +57,8 @@ export class StompSockWebSocket implements IStompSockWebsocket {
         }
     }
 
-    public send(destination: string, data: any): void {
-        this.stompClient.publish({ destination: `${destination}/${this._guid}`, headers: { pageRequest: JSON.stringify(data), body: {} } });
+    public send(destination: string, headers: any): void {
+        this.stompClient.publish({ destination: `${destination}/${this._guid}`, headers: this._stringifyHeaders(headers), body: {} });
     }
 
     public isValidJSON(text: string): boolean {

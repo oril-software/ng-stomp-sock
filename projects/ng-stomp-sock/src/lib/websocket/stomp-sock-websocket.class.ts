@@ -21,7 +21,7 @@ export class StompSockWebSocket implements IStompSockWebsocket {
     }
 
     private _subscribe(url: string) {
-        this._subscription = this.stompClient.subscribe(`${url}/${this.channel}`,
+        this._subscription = this.stompClient.subscribe(`${url}`,
             (message: Frame) => {
                 if (this.isValidJSON(message.body)) {
                     this.wsMessages$.next(new WsMessage(message.command as WsCommand, JSON.parse(message.body)));
@@ -56,7 +56,7 @@ export class StompSockWebSocket implements IStompSockWebsocket {
     }
 
     public send(destination: string, headers: any): void {
-        this.stompClient.publish({ destination: `${destination}/${this._guid}`, headers: this._stringifyHeaders(headers), body: {} });
+        this.stompClient.publish({ destination: `${destination}`, headers: this._stringifyHeaders(headers), body: {} });
     }
 
     public isValidJSON(text: string): boolean {

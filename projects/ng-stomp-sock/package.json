@@ -1,6 +1,6 @@
 {
   "name": "@oril/ng-stomp-sock",
-  "version": "0.0.2-0",
+  "version": "0.1.2",
   "description": "Angular 9 (6+) wrapper for using STOMP.js over SockJS",
   "peerDependencies": {
     "@angular/common": "^9.0.7",

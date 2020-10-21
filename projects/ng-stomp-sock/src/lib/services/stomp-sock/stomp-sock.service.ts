@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { config } from '../../tokens/injection-token';
 import * as SockJS from 'sockjs-client';
 import { FactoryItem } from '../../models/interfaces/factory-item.interface';
@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Client } from '@stomp/stompjs';
 import { WebSocketConfig } from '../../models/interfaces/websocket-config.interface';
 import { StompSockWebSocket } from '../../websocket/stomp-sock-websocket.class';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,17 @@ export class StompSockService {
   private _factory: FactoryItem<StompSockWebSocket>[] = [];
   public connected$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  constructor(@Inject(config) private _wsConfig: WebSocketConfig) {
+  private get _isBrowser(): boolean {
 
-    this._connectSocket(this._wsConfig);
+    return isPlatformBrowser(this.platformId);
+  }
+
+  constructor(
+    @Inject(config) private _wsConfig: WebSocketConfig,
+    @Inject(PLATFORM_ID) private platformId: any) {
+      if (!this._wsConfig.ssr || this._isBrowser) {
+        this._connectSocket(this._wsConfig);
+      }
   }
 
 

@@ -154,7 +154,7 @@ Sends a message to a named destination.
 | Name            | Type   | Description       |
 | --------------- |--------| ------------------|
 | destination     | string | Endpoint string   |
-| destination     | Object | Request headers   |
+| data            | Object | Request headers   |
 
 ---
 
@@ -182,6 +182,18 @@ STOMP Client headers.
 
 STOMP Client channel.
 
+## WebSocketConfig
+
+Module config
+
+interface
+
+
+| Name              | Type    | Description                                                                |
+| ----------------- | ------- | -------------------------------------------------------------------------- |
+| url               | string  | Socket API URL                                                             |
+| reconnectInterval | number  | Reconnect interval in ms (Default: 3000)                                   |
+| ssr               | boolean | Disables sockets connection while rendering on a server (Default: false)   |
 
 ## WsCommand
 

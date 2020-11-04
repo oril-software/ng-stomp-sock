@@ -41,8 +41,12 @@ export class StompSockWebSocket implements IStompSockWebsocket {
         return stringifiedHeaders;
     }
 
-    public unsubscribe() {
-        this._subscription.unsubscribe();
+    public unsubscribe(headers?: any) {
+        if (headers) {
+            this._subscription.unsubscribe(this._stringifyHeaders(headers));
+        } else {
+            this._subscription.unsubscribe();
+        }
     }
 
     public on<T>(event: WsCommand): Observable<T> {

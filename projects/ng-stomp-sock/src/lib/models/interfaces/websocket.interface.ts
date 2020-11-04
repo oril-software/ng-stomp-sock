@@ -8,5 +8,5 @@ export interface IStompSockWebsocket {
     wsMessages$: Subject<WsMessage<any>>;
     on<T>(event: WsCommand): Observable<T>;
     send(event: string, data: any): void;
-    unsubscribe(): void;
+    unsubscribe(headers?: any): void;
 }

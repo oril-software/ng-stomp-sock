@@ -73,17 +73,23 @@ export class StompSockService {
     return index;
   }
 
-  private _removeFromFactory(type: string) {
+  private _removeFromFactory(type: string, headers?: any) {
     const idx = this._factory.findIndex(item => {
 
       return item.name === type;
     });
-    this._factory[idx].value.unsubscribe();
+
+    if (headers) {
+      this._factory[idx].value.unsubscribe(headers);
+    } else {
+      this._factory[idx].value.unsubscribe();
+    }
+
     this._factory.splice(idx, 1);
   }
 
-  public unsubscribe(destination: string) {
-    this._removeFromFactory(destination);
+  public unsubscribe(destination: string, headers?: any) {
+    this._removeFromFactory(destination, headers);
   }
 }
 

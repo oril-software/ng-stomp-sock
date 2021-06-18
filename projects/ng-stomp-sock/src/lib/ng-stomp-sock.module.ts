@@ -18,7 +18,7 @@ import { StompSockService } from './services/stomp-sock/stomp-sock.service';
   ]
 })
 export class NgStompSockModule {
-  public static config(wsConfig: WebSocketConfig): ModuleWithProviders {
+  public static config(wsConfig: WebSocketConfig): ModuleWithProviders<NgStompSockModule> {
 
     return {
       ngModule: NgStompSockModule,

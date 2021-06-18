@@ -1,6 +1,6 @@
 # ng-stomp-sock
 
-This package is an Angular 9 (6+) wrapper for using [STOMP.js](https://github.com/stomp-js/stompjs) over [SockJS](https://github.com/sockjs/sockjs-client).
+This package is an Angular 12 (6+) wrapper for using [STOMP.js](https://github.com/stomp-js/stompjs) over [SockJS](https://github.com/sockjs/sockjs-client).
 
 ![ng-stomp-sock demo](https://raw.githubusercontent.com/oril-software/ng-stomp-sock/master/projects/ng-stomp-sock-demo/src/assets/demo.gif)
 

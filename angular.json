@@ -17,12 +17,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["sockjs-client"],
             "outputPath": "dist/ng-stomp-sock-demo",
             "index": "projects/ng-stomp-sock-demo/src/index.html",
             "main": "projects/ng-stomp-sock-demo/src/main.ts",
             "polyfills": "projects/ng-stomp-sock-demo/src/polyfills.ts",
             "tsConfig": "projects/ng-stomp-sock-demo/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/ng-stomp-sock-demo/src/favicon.ico",
               "projects/ng-stomp-sock-demo/src/assets"
@@ -31,7 +31,13 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/ng-stomp-sock-demo/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -44,7 +50,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -62,7 +67,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -133,7 +139,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/ng-stomp-sock/tsconfig.lib.json",
             "project": "projects/ng-stomp-sock/ng-package.json"

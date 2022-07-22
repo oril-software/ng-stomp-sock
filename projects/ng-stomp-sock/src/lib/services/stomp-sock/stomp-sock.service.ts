@@ -79,10 +79,15 @@ export class StompSockService {
       return item.name === type;
     });
 
+    if (idx < 0) {
+
+      return;
+    }
+
     if (headers) {
-      this._factory[idx].value.unsubscribe(headers);
+      this._factory[idx]?.value.unsubscribe(headers);
     } else {
-      this._factory[idx].value.unsubscribe();
+      this._factory[idx]?.value.unsubscribe();
     }
 
     this._factory.splice(idx, 1);

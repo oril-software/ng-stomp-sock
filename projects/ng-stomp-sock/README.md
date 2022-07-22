@@ -145,16 +145,17 @@ Returns messages from STOMP Client filtered by event.
 
 ---
 
-`send(destination: string, data: any): void`
+`send(destination: string, headers: any, body: any): void`
 
 Sends a message to a named destination.
 
 ##### Parameters
 
-| Name            | Type   | Description       |
-| --------------- |--------| ------------------|
-| destination     | string | Endpoint string   |
-| data            | Object | Request headers   |
+| Name            | Type   | Description                                        |
+| --------------- |--------| ---------------------------------------------------|
+| destination     | string | Endpoint string                                    |
+| headers         | Object | Request headers, will be stringified before send   |
+| body            | Object | Request body                                       |
 
 ---
 

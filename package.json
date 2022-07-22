@@ -1,14 +1,16 @@
 {
   "name": "ng-stomp-sock-workspace",
-  "version": "0.0.0",
+  "version": "12.0.1і",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "postinstall": "ngcc",
+    "build": "npm run build:lib && npm run build:demo",
+    "build:lib": "ng build ng-stomp-sock --configuration production",
+    "build:demo": "ng build ng-stomp-sock-demo"
   },
   "private": true,
   "dependencies": {
